@@ -56,7 +56,7 @@ function connectVariablesToGLSL(){
   }
 }
 
-let g_selectedColor=[1.0,1.0,1.0,1.0]
+let g_selectedColor=[1.0,1.0,1.0,1.0];
 
 function addActionForHTMLUI(){
 
@@ -98,7 +98,9 @@ function click(ev) {
   // Store the coordinates to g_points array  (where to put the squares on the canvas)
   g_points.push([x, y]);
   // Store the coordinates to g_points array
-  g_colors.push(g_selectedColor);
+  //g_colors.push(g_selectedColor); //this holds a pointer
+
+  g_colors.push(g_selectedColor.slice());
 
   /*   if (x >= 0.0 && y >= 0.0) {      // First quadrant
     g_colors.push([1.0, 0.0, 0.0, 1.0]);  // Red
@@ -131,7 +133,7 @@ function renderAllShapes(){
   var len = g_points.length;
   for(var i = 0; i < len; i++) {
     var xy = g_points[i];
-    var rgba = g_colors[i];
+    var rgba = g_colors[i];  //extracting color that saved at each point
 
     // Pass the position of a point to a_Position variable
     gl.vertexAttrib3f(a_Position, xy[0], xy[1], 0.0);
