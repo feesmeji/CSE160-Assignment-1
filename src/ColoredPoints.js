@@ -79,6 +79,7 @@ const CIRCLE = 2;
 let g_selectedColor=[1.0,1.0,1.0,1.0];
 let g_selectedSize = 5;
 let g_selectedType=POINT;
+let g_selectedSegment = 3;
 
 function addActionForHTMLUI(){
 
@@ -100,7 +101,7 @@ function addActionForHTMLUI(){
   document.getElementById('sizeSlide').addEventListener('mouseup', function() {g_selectedSize = this.value;});
 
   //Segment Slider Events
-  document.getElementById('segmentSlide').addEventListener('mouseup', function() {g_selectedSize = this.value;});
+  document.getElementById('segmentSlide').addEventListener('mouseup', function() {g_selectedSegment = this.value;});
 }
 
 
@@ -142,13 +143,15 @@ function click(ev) {
   }
   else{
     point = new Circle();
+    // Set the segments property of the circle
+    point.segments = g_selectedSegment;  //chat gpt helped me come up with this line of code, I was stuck debugging part 11 but it helped me come up with this code.
   }
 
   point.position=[x,y];
   point.color=g_selectedColor.slice();
   point.size=g_selectedSize;
   g_shapesList.push(point);
-  
+  //g_selectedType.push(point);
   // Store the coordinates to g_points array  (where to put the squares on the canvas)
   /* g_points.push([x, y]);
   // Store the coordinates to g_points array
