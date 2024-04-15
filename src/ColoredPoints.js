@@ -102,7 +102,10 @@ function addActionForHTMLUI(){
 
   //Segment Slider Events
   document.getElementById('segmentSlide').addEventListener('mouseup', function() {g_selectedSegment = this.value;});
+
+  document.getElementById('drawingButton').onclick = function(){drawMyDrawing();};  //chat gpt helped me come up with this line of code
 }
+
 
 
 function main() {
@@ -141,7 +144,7 @@ function click(ev) {
   else if (g_selectedType==TRIANGLE){
     point = new Triangle();
   }
-  else{
+  else if (g_selectedType==CIRCLE){
     point = new Circle();
     // Set the segments property of the circle
     point.segments = g_selectedSegment;  //chat gpt helped me come up with this line of code, I was stuck debugging part 11 but it helped me come up with this code.
@@ -175,6 +178,12 @@ function click(ev) {
   // draw all of the shapes that need to appear on the canvas. 
   renderAllShapes();
 }
+
+function drawMyDrawing() { //chat gpt helped me come up with these two lines
+  drawTriangle([0, 0, 0.1, 0.2, -0.1, 0.2]); // Example vertices
+  drawTriangle([0, 0, -0.1, 0.2, -0.2, 0.1]); // Example vertices
+}
+
 
 function convertCoordinatesEventToGL(ev){
   var x = ev.clientX; // x coordinate of a mouse pointer
