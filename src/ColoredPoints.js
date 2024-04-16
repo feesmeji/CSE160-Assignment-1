@@ -129,7 +129,7 @@ function main() {
 var g_shapesList = [];
 
 //  var g_points = [];  // The array for the position of a mouse press
-//  var g_colors = [];  // The array to store the color of a point
+//  var g_colors = [1.0, 1.0, 1.0, 1.0];  // The array to store the color of a point
 //  var g_sizes = [];
 
 function click(ev) {
@@ -179,9 +179,46 @@ function click(ev) {
   renderAllShapes();
 }
 
-function drawMyDrawing() { //chat gpt helped me come up with these two lines
-  drawTriangle([0, 0, 0.1, 0.2, -0.1, 0.2]); // Example vertices
-  drawTriangle([0, 0, -0.1, 0.2, -0.2, 0.1]); // Example vertices
+function drawMyDrawing() {
+  // Set color as yellow
+  gl.uniform4f(u_FragColor, 1.0, 1.0, 0.0, 1.0); // chat gpt helped me come up with this line (debug color not working for this function), Wendy the tutor gave me ideasof what could work which eventually led me to this
+
+  //chat gpt helped me come up with these first two lines
+  // yellow triangles
+  drawTriangle([0, 0, 0.4, 0.8, -0.4, 0.8]); //tri 1
+  drawTriangle([0, 0, -0.4, 0.8, -0.8, 0.4]); //tri 2
+  drawTriangle([0, 0, -0.8, 0.4, -0.9, 0.0]); //tri 3
+  drawTriangle([0, 0, -0.9, 0, -0.8, -0.4]);  //tri 4
+  drawTriangle([0, 0, -0.8, -0.4, -0.4, -0.8]);  //tri 5
+  drawTriangle([0, 0, -0.4, -0.8, 0.4, -0.8]);  //tri 6
+  drawTriangle([0, 0, -0.4, -0.8, 0.4, -0.8]);  //tri 7
+  drawTriangle([0, 0, 0.4, -0.8, 0.8, -0.4]); //tri 8
+  drawTriangle([0, 0, 0.8, -0.4, 0.9, 0]); //tri 9
+  drawTriangle([0, 0, 0.9, 0.0, 0.8, 0.4]); //tri 10
+  drawTriangle([0, 0, 0.4, 0.8, 0.8, 0.4]); //tri 11
+
+  //draw blue eyes
+  gl.uniform4f(u_FragColor, 0.0, 0.0, 1.0, 1.0); // chat gpt helped me come up with this line (debug color not working for this function), Wendy the tutor gave me ideasof what could work which eventually led me to this
+  drawTriangle([-0.5, 0.1, -0.5, 0.4, -0.2, 0.4])
+  drawTriangle([-0.5, 0.1, -0.2, 0.4, -0.2, 0.1])
+  drawTriangle([0.5, 0.1, 0.5, 0.4, 0.2, 0.4])
+  drawTriangle([0.5, 0.1, 0.2, 0.4, 0.2, 0.1])
+
+  //draw red nose
+  gl.uniform4f(u_FragColor, 1.0, 0.0, 0.0, 1.0); 
+  drawTriangle([-0.2, -0.2, -0.2, 0.0, 0.2, 0.0])
+  drawTriangle([-0.2, -0.2, 0.2, 0.0, 0.2, -0.2])
+
+  //draw black mouth
+  gl.uniform4f(u_FragColor, 0.0, 0.0, 0.0, 1.0); 
+  drawTriangle([-0.5, -0.3, 0.5, -0.6, -0.5, -0.6])
+  drawTriangle([-0.5, -0.3, 0.5, -0.6, 0.5, -0.3])
+
+
+  //draw red tounge
+  gl.uniform4f(u_FragColor, 1.0, 0.0, 0.0, 1.0); 
+  drawTriangle([-0.2, -0.6, -0.2, -0.4, 0.2, -0.4])
+  drawTriangle([-0.2, -0.6, 0.2, -0.4, 0.2, -0.6])
 }
 
 
