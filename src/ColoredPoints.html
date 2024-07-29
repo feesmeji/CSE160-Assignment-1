@@ -2,18 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Change a point color</title>
+    <title>CSE160 Assignment 1</title>
   </head>
 
   <body onload="main()">
 
-    <h1>Fernando Mejia</h1>
-    <p>UCSC Email: feesmeji@ucsc.edu</p>
-    
-    <p>Notes to grader: Most code based off of Professor's walkthrough videos. ChatGPT helped me debug and get unstuck with my code, and I made comments in my code indicating where it was used. Also recieved small help from course tutor.
-    </p>
+    <h1>CSE 160 Assignment 1: Painting</h1>
+    <p>Author: Fernando Mejia</p>  
 
-    <br><br>
+    <p><b>Description:</b> Simple paint program that draws on the screen when you drag with your mouse.</p>
+
+    <p><b>Instructions:</b> 
+    <p>1. Simply start drawing by dragging your mouse across the screen. For a colorful experience, start by selecting the color you would like to draw with by clicling "Green" or "Red".</p>
+    <p>2. Select the shape of your brush from the list of buttons "Point", "Triangle", or "Circle".</p>
+    <p>3. If you want to use colors other than green or red, use the "Red", "Green", and "Blue" color sliders to mix the base green and red colors.</p>
+    <p>4. If you are drawing with the "Circle" function, you may adjust the amount of segments of your circle brush with the "(Circles) Segment Count" slider.</p>
+    <p>5. Once you are done drawing, use the "Clear" button to erase your drawing.</p>
+
+    <p><b>Special: </b> Click on the "MyDrawing" button for a surprise!</p>
     <canvas id="webgl" width="400" height="400">
     Please use a browser that supports "canvas"
     </canvas>
@@ -61,5 +67,14 @@
     <script src="../src/Triangle.js"></script>
     <script src="../src/Point.js"></script>
     <script src="../src/ColoredPoints.js"></script>
+
+    <p id="last-modified"><i></i></p>
+
+    <script>
+    let text = "Last modified: ";
+    document.getElementById("last-modified").innerHTML = '<i>' + text + document.lastModified + '</i>';
+    </script>
+
+
   </body>
 </html>
